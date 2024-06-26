@@ -12,7 +12,7 @@ export default defineConfig(({ mode }) => {
             cssMinify: false,
             emptyOutDir: false,
             outDir: "dist",
-            minify: false,
+            minify: "esbuild",
             sourcemap: false,
             lib: {
                 entry: "src/index.tsx",
