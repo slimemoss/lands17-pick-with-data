@@ -10,7 +10,7 @@ Tampermonkeyスクリプトとして動作します。
 [Tampermonkey](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=ja)を
 Chromeの拡張機能として追加
 
-Chomeの`設定 > 拡張機能 > 拡張機能の管理` へ行き、右上の`デベロッパーモードを有効にする` [^1]
+Chomeの`設定 > 拡張機能 > 拡張機能の管理` へ行き、右上から`デベロッパーモード`を有効にする [^1]
 
 [^1]: [Tampermonkey Changelog 5.2.0](https://www.tampermonkey.net/changelog.php#v5.2.0)
 
