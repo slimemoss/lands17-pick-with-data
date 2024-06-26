@@ -1,7 +1,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import App from "./App";
+import App from "./app/App"
 import { awaitElement, log, addLocationChangeCallback } from "./utils";
 
 log("React script has successfully started");
@@ -12,7 +12,7 @@ log("React script has successfully started");
 async function main() {
     // Find <body/>. This can be any element. We wait until
     // the page has loaded enough for that element to exist.
-    const body = await awaitElement("body > div");
+    const body = await awaitElement("div.draft_section");
     const container = document.createElement("div");
     body.appendChild(container);
     const root = createRoot(container);

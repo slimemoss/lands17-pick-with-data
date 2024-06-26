@@ -6,7 +6,7 @@ export default defineConfig(({ mode }) => {
     return {
         plugins: [bundlePlugin],
         base: "./",
-        root: "../",
+        root: "./",
         build: {
             cssCodeSplit: false,
             cssMinify: false,
@@ -15,7 +15,7 @@ export default defineConfig(({ mode }) => {
             minify: false,
             sourcemap: false,
             lib: {
-                entry: "userscript/src/index.tsx",
+                entry: "src/index.tsx",
                 name: "userscript",
                 fileName: (_format) => `react-userscripts.user.js`,
                 formats: ["iife"],
