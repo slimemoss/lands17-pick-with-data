@@ -45,6 +45,11 @@ type Props = {
     colorConfig: Set<string>
 }
 
+export const divToData = (div: Element) => {
+    const name = div.querySelector('img.card_slot_2')?.getAttribute('alt')??''
+    const data = pick_data[name]
+    return data
+}
 
 const Card = (props: Props) => {
     const originalRef = React.useRef<HTMLDivElement>(null)
@@ -58,8 +63,7 @@ const Card = (props: Props) => {
         }
     })
 
-    const name = props.original.querySelector('img.card_slot_2')?.getAttribute('alt')??''
-    const data = pick_data[name]
+    const data = divToData(props.original)
 
     if (data) {
         const alsa = alsaText(data['alsa'])
