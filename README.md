@@ -3,6 +3,8 @@
 
 Tampermonkeyスクリプトとして動作します。
 
+いまのところ、MH3専用です。
+
 ![screenshot](img/screenshot.png)
 
 # 使い方
