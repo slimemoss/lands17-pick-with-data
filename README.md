@@ -15,4 +15,4 @@ Chomeの`設定 > 拡張機能 > 拡張機能の管理` へ行き、右上の`�
 [^1]: [Tampermonkey Changelog 5.2.0](https://www.tampermonkey.net/changelog.php#v5.2.0)
 
 ## 本スクリプトをTampermonkeyに追加
-[ここをクリック](dist/react-userscripts.user.js) すると、Tampermonkeyのインストール画面に飛びます。
+[ここをクリック](dist/react-userscripts.user.js?raw=1) すると、Tampermonkeyのインストール画面に飛びます。
