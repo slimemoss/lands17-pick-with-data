@@ -1,10 +1,19 @@
 import React from "react"
 import { colors } from "./common"
 
+import ManaIcons from './data/mana.json'
+
+type ManaIconsT = {
+    [dict_key: string]: string
+}
+
+const mana_icons = ManaIcons as ManaIconsT
+
 type ColorConfigHooks = {
     add: (color: string) => void
     rm: (color: string) => void
     fix: (color: string, check: boolean) => void
+    toggle: (color: string) => void
 }
 
 export const useColorConfig = (): [Set<string>, ColorConfigHooks] => {
@@ -27,20 +36,33 @@ export const useColorConfig = (): [Set<string>, ColorConfigHooks] => {
         else{rm(color)}
     }
 
-    return [select, {add, rm, fix}]
+    const toggle = (color: string) => {
+        if (select.has(color)) {
+            rm(color)
+        } else {
+            add(color)
+        }
+    }
+
+    return [select, {add, rm, fix, toggle}]
 }
 
 const ColorConfig = ({ colorConfig, colorConfigHooks }: { colorConfig: Set<string>, colorConfigHooks: ColorConfigHooks }) => {
+    const shouldRight = (c: string) => {
+        return colorConfig.size == 0 || colorConfig.has(c)
+    }
+
     return (
-        <div style={{display: 'flex', gap: '10px'}}>
+        <div style={{display: 'flex', gap: '10px', margin: '8px'}}>
             {colors.map((c) => {
                 return (
                     <div>
-                        <input type="checkbox" checked={colorConfig.has(c)}
-                               onChange={(e) => {
-                                   colorConfigHooks.fix(c, e.target.checked)
-                               }}/>
-                        <label>{c}</label>
+                        <img src={"data:image/png;base64," + mana_icons[c]} width="25rem"
+                             style={{filter: shouldRight(c) ? 'brightness(100%)' : 'brightness(50%)'}}
+                             onClick={() => {
+                                 colorConfigHooks.toggle(c)
+                             }}
+                        />
                     </div>
                 )
             })}            
