@@ -1,4 +1,4 @@
-import PickData from './data/mh3.json'
+import PickData from './data/blb.json'
 
 type PickDataT = {
   [dict_key: string]: {

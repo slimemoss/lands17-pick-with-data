@@ -3,7 +3,7 @@
 
 Tampermonkeyスクリプトとして動作します。
 
-いまのところ、MH3専用です。
+いまのところ、BLB専用です。
 
 ![screenshot](img/screenshot.png)
 
