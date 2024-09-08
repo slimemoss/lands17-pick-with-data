@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name 17lands Pick with CardData
-// @version 1.0.5
+// @version 1.0.6
 // @namespace http://tampermonkey.net/
 // @author slimemoss
 // @homepage https://github.com/slimemoss/lands17-pick-with-data
