@@ -1,5 +1,6 @@
 import { PluginOption, defineConfig } from "vite";
 import fs from "node:fs";
+import dayjs from 'dayjs';
 
 export default defineConfig(({ mode }) => {
     console.log("Building in", mode);
@@ -34,7 +35,8 @@ export default defineConfig(({ mode }) => {
         define: {
             // Don't pick up weird variables from `NODE_ENV`
             // https://github.com/vitejs/vite/discussions/13587
-            "process.env.NODE_ENV": JSON.stringify(mode),
+            'process.env.NODE_ENV': JSON.stringify(mode),
+            'BUILD_TIMESTAMP': JSON.stringify(dayjs().format('YYYY-MM-DD HH:mm')),
         },
     };
 });

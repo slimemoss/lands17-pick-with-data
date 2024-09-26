@@ -20,9 +20,12 @@ const divToAlsa = (div: Element) => {
 
 const PickOption = (props: Props) => {
     const [colorConfig, colorConfigHooks] = useColorConfig()
-
+    const buildTime = BUILD_TIMESTAMP
     return (
         <div>
+            <div>
+                カードデータ取得時刻: {buildTime}
+            </div>
             <div>
                 <ColorConfig colorConfigHooks={colorConfigHooks} colorConfig={colorConfig}/>
             </div>
