@@ -3,18 +3,19 @@
 
 Tampermonkeyスクリプトとして動作します。
 
-いまのところ、BLB専用です。
+いまのところ、最新セットのみ対応しています。
 
 ![screenshot](img/screenshot.png)
 
-# 使い方
+# インストール手順
 ## 1. TampermonkeyをChromeに追加
 [Tampermonkey](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=ja)を
 Chromeの拡張機能として追加
 
 Chomeの`設定 > 拡張機能 > 拡張機能の管理` へ行き、右上から`デベロッパーモード`を有効にする [^1]
 
-[^1]: [Tampermonkey Changelog 5.2.0](https://www.tampermonkey.net/changelog.php#v5.2.0)
+[^1]: [Q209: Developer mode to run userscripts](https://www.tampermonkey.net/faq.php#Q209)
 
-## 2. 本スクリプトをTampermonkeyに追加
-[ここをクリック](https://github.com/slimemoss/lands17-pick-with-data/raw/deploy/dist/react-userscripts.user.js) すると、Tampermonkeyのインストール画面に飛びます。
+## 2. このスクリプトをTampermonkeyに追加
+[ここをクリック](https://github.com/slimemoss/lands17-pick-with-data/raw/deploy/dist/react-userscripts.user.js) すると、
+このスクリプトがTampermonkeyに追加されます
