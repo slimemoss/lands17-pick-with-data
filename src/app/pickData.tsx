@@ -21,8 +21,10 @@ lands17-pick-with-data/refs/heads/master/public_data/card_data.json`
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState<Tampermonkey.ErrorResponse | null>(null)
 
+    const fetch = typeof GM.xmlHttpRequest ? GM.xmlHttpRequest : GM_xmlhttpRequest
+
     useEffect(() => {
-        GM_xmlhttpRequest({
+        fetch({
             method: 'GET',
             url: url,
             onload: response => {
