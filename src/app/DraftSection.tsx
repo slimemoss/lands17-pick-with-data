@@ -59,7 +59,7 @@ function ModifiedDraftSection({pickdata}: {pickdata: AllPickDataI}) {
     return (
         <div>
             <div>
-                更新日時: {pickdata.update}
+               カードデータ(GIH, ALSA) 更新日時: {pickdata.update}
             </div>
             <div>
                 <ColorConfig colorConfigHooks={colorConfigHooks} colorConfig={colorConfig}/>
