@@ -1,12 +1,5 @@
 import { PluginOption, defineConfig } from "vite";
 import fs from "node:fs";
-import dayjs from 'dayjs';
-import utc from 'dayjs/plugin/utc';
-import timezone from 'dayjs/plugin/timezone';
-
-dayjs.extend(utc);
-dayjs.extend(timezone);
-const buildTimestamp = dayjs().tz('Asia/Tokyo').format('YYYY-MM-DD HH:mm:ss');
 
 export default defineConfig(({ mode }) => {
     console.log("Building in", mode);
@@ -42,7 +35,6 @@ export default defineConfig(({ mode }) => {
             // Don't pick up weird variables from `NODE_ENV`
             // https://github.com/vitejs/vite/discussions/13587
             'process.env.NODE_ENV': JSON.stringify(mode),
-            'BUILD_TIMESTAMP': JSON.stringify(buildTimestamp)
         },
     };
 });
@@ -51,7 +43,7 @@ const bundlePlugin: PluginOption = {
     name: "bundle-plugin",
     apply: "build",
     enforce: "post",
-    generateBundle(options, bundle) {
+    generateBundle(_, bundle) {
         // Gather all the CSS together to be injected later
         let css = "";
         for (const fileName in bundle) {

@@ -1,5 +1,6 @@
 import React from "react"
-import { colors, pick_data } from "./common"
+import { PickDataI } from "./pickData"
+import { colors } from "./common"
 
 const gihColor = (gih: number | null): string => {
     var color = ''
@@ -40,60 +41,43 @@ const alsaText = (v: number | null): string => {
     }
 }
 
-type Props = {
-    original: Element
+const Card = ({info, colorConfig}: {
+    info: {
+        data: PickDataI, name: string | null | undefined, div: Node
+    },
     colorConfig: Set<string>
-}
+}) => {
 
-export const divToData = (div: Element) => {
-    const name = div.querySelector('img.card_slot_2')?.getAttribute('alt')??''
-    const data = pick_data[name]
-    return data
-}
-
-const Card = (props: Props) => {
     const originalRef = React.useRef<HTMLDivElement>(null)
-
-    const div = props.original.cloneNode(true)
 
     React.useEffect(() => {
         if (originalRef.current) {
             originalRef.current.innerHTML=''
-            originalRef.current.appendChild(div);
+            originalRef.current.appendChild(info.div);
         }
     })
 
-    const data = divToData(props.original)
+    const alsa = alsaText(info.data['alsa'])
 
-    if (data) {
-        const alsa = alsaText(data['alsa'])
-
-        return (
-            <div style={{textAlign: 'center'}}>
-            <div ref={originalRef}/>
-            <div>alsa: {alsa}</div>
-            {colors.map((c) => {
-                const gih = data[c]
-                var opacity = 1
-                if(props.colorConfig.has(c) || props.colorConfig.size == 0) {
-                }else {
-                    opacity = 0.3
-                }
-                return (
-                    <div style={{backgroundColor: gihColor(gih), opacity: opacity}}>
-                        {c}: {gihText(gih).replace(/ /g, "\u00A0")}
-                    </div>
-                )
-            })}
-            </div>
-        )
-    } else {
-        return (
-            <div style={{textAlign: 'center'}}>
-                <div ref={originalRef}></div>
-            </div>
-        )
-    }
+    return (
+        <div style={{textAlign: 'center'}}>
+        <div ref={originalRef}/>
+        <div>alsa: {alsa}</div>
+        {colors.map((c) => {
+            const gih = info.data[c]
+            var opacity = 1
+            if(colorConfig.has(c) || colorConfig.size == 0) {
+            }else {
+                opacity = 0.3
+            }
+            return (
+                <div style={{backgroundColor: gihColor(gih), opacity: opacity}}>
+                    {c}: {gihText(gih).replace(/ /g, "\u00A0")}
+                </div>
+            )
+        })}
+        </div>
+    )
 
 }
 

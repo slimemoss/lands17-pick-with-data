@@ -1,7 +1,7 @@
-import React from "react"
-import { colors } from "./common"
+import React, { useState } from "react"
 
 import ManaIcons from './data/mana.json'
+import { colors } from "./common"
 
 type ManaIconsT = {
     [dict_key: string]: string
@@ -17,7 +17,7 @@ type ColorConfigHooks = {
 }
 
 export const useColorConfig = (): [Set<string>, ColorConfigHooks] => {
-    const [select, setSelect] = React.useState<Set<string>>(new Set())
+    const [select, setSelect] = useState<Set<string>>(new Set())
 
     const add = (color: string) => {
         const res = new Set(select)
@@ -47,7 +47,7 @@ export const useColorConfig = (): [Set<string>, ColorConfigHooks] => {
     return [select, {add, rm, fix, toggle}]
 }
 
-const ColorConfig = ({ colorConfig, colorConfigHooks }: { colorConfig: Set<string>, colorConfigHooks: ColorConfigHooks }) => {
+export function ColorConfig({ colorConfig, colorConfigHooks }: { colorConfig: Set<string>, colorConfigHooks: ColorConfigHooks }) {
     const shouldRight = (c: string) => {
         return colorConfig.size == 0 || colorConfig.has(c)
     }

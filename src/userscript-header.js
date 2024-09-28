@@ -6,4 +6,5 @@
 // @homepage https://github.com/slimemoss/lands17-pick-with-data
 // @updateURL https://github.com/slimemoss/lands17-pick-with-data/raw/deploy/dist/react-userscripts.user.js
 // @match https://www.17lands.com/draft/*
+// @connect raw.githubusercontent.com
 // ==/UserScript==

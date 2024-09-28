@@ -1,8 +1,8 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import App from "./app/App"
 import { awaitElement, log, addLocationChangeCallback } from "./utils";
+import { DraftSection } from "./app/DraftSection.tsx";
 
 log("React script has successfully started");
 
@@ -16,7 +16,7 @@ async function main() {
     const container = document.createElement("div");
     body.appendChild(container);
     const root = createRoot(container);
-    root.render(<App />);
+    root.render(<DraftSection/>);
 }
 
 // Call `main()` every time the page URL changes, including on first load.
