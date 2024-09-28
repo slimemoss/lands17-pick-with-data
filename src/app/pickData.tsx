@@ -15,7 +15,7 @@ export type PickDataI = {
 
 export function usePickData() {
     const url = `https://raw.githubusercontent.com/slimemoss/
-lands17-pick-with-data/refs/heads/fetch_data_from_github/public_data/card_data.json`
+lands17-pick-with-data/refs/heads/master/public_data/card_data.json`
 
     const [data, setData] = useState<AllPickDataI | undefined>(undefined)
     const [loading, setLoading] = useState(true)
