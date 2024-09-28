@@ -22,7 +22,7 @@ lands17-pick-with-data/refs/heads/master/public_data/card_data.json`
     const [error, setError] = useState<Tampermonkey.ErrorResponse | null>(null)
 
     useEffect(() => {
-        GM.xmlHttpRequest({
+        GM_xmlhttpRequest({
             method: 'GET',
             url: url,
             onload: response => {
