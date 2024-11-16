@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
-import { colors } from './common'
-colors
+import { gihColorFunc } from './gihColorMap'
 
 export type AllPickDataI = {
     update: string,
@@ -38,5 +37,8 @@ lands17-pick-with-data/refs/heads/master/public_data/card_data.json`
         })
     }, [])
 
-    return {data, loading, error}
+    return {
+        data, loading, error,
+        gihColor: data ? gihColorFunc(data) : (_: number) => { return '' }
+    }
 }

@@ -2,27 +2,6 @@ import React from "react"
 import { PickDataI } from "./pickData"
 import { colors } from "./common"
 
-const gihColor = (gih: number | null): string => {
-    var color = ''
-    if (!gih) {
-        return ''
-    }
-    if (gih > 0.60) {
-        color = 'rgba(0, 255, 0, 0.4)'
-    } else if (gih > 0.58) {
-        color = 'rgba(0, 255, 0, 0.2)'
-    } else if (gih > 0.56) {
-        color = 'rgba(0, 255, 0, 0.1)'
-    } else if (gih > 0.54) {
-        color = 'rgba(0, 255, 0, 0.0)'
-    } else if (gih > 0.52) {
-        color = 'rgba(255, 0, 0, 0.15)'
-    } else {
-        color = 'rgba(255, 0, 0, 0.3)'
-    }
-    return color
-}
-
 const gihText = (v: number | null):string => {
     var res = ''
     if (v) {
@@ -41,11 +20,12 @@ const alsaText = (v: number | null): string => {
     }
 }
 
-const Card = ({info, colorConfig}: {
+const Card = ({info, colorConfig, gihColor}: {
     info: {
         data: PickDataI, name: string | null | undefined, div: Node
     },
-    colorConfig: Set<string>
+    colorConfig: Set<string>,
+    gihColor: (gih: number) => string
 }) => {
 
     const originalRef = React.useRef<HTMLDivElement>(null)
@@ -59,6 +39,14 @@ const Card = ({info, colorConfig}: {
 
     const alsa = alsaText(info.data['alsa'])
 
+    const nullableGihColor = (gih: number | null): string => {
+        if(gih) {
+            return gihColor(gih)
+        } else {
+            return ''
+        }
+    }
+
     return (
         <div style={{textAlign: 'center'}}>
         <div ref={originalRef}/>
@@ -71,7 +59,7 @@ const Card = ({info, colorConfig}: {
                 opacity = 0.3
             }
             return (
-                <div style={{backgroundColor: gihColor(gih), opacity: opacity}}>
+                <div style={{backgroundColor: nullableGihColor(gih), opacity: opacity}}>
                     {c}: {gihText(gih).replace(/ /g, "\u00A0")}
                 </div>
             )

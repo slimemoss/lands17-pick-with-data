@@ -8,14 +8,14 @@ import Card from './Card.tsx'
 import { colors } from './common.tsx'
 
 export function DraftSection() {
-    const {data, loading, error} = usePickData()
+    const {data, loading, error, gihColor} = usePickData()
     const shouldModified = (data != undefined) && (!loading) && (error == null)
 
     const draftPickOptions = document.querySelector<Element>('div.draft_pick_options')
 
     if(shouldModified) {
         draftPickOptions?.setAttribute('hidden', 'true')
-        return <ModifiedDraftSection pickdata={data} />
+        return <ModifiedDraftSection pickdata={data} gihColor={gihColor} />
     } else {
         draftPickOptions?.removeAttribute('hidden')
         return (<></>)
@@ -39,7 +39,12 @@ function getCardList(pickdata: AllPickDataI) {
     })
 }
 
-function ModifiedDraftSection({pickdata}: {pickdata: AllPickDataI}) {
+function ModifiedDraftSection(
+    {pickdata, gihColor}: {
+        pickdata: AllPickDataI,
+        gihColor: (_: number) => string
+    }
+) {
     const forceRender = useForceRerender()
     const [colorConfig, colorConfigHooks] = useColorConfig()
 
@@ -68,7 +73,7 @@ function ModifiedDraftSection({pickdata}: {pickdata: AllPickDataI}) {
                 {cardList.map(info => {
                     return (
                         <div>
-                            <Card info={info} colorConfig={colorConfig} />
+                            <Card info={info} colorConfig={colorConfig} gihColor={gihColor} />
                         </div>
                     )
                 })}
